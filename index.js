@@ -16,9 +16,12 @@ const messageListInDb=ref(database,'messageList')
 
 const messageList=document.getElementById('message-list')
 const textMessage=document.getElementById('text-message')
-const from=document.getElementById('from')
-const to =document.getElementById('to')
+const author = document.getElementById('from')
+const recepient = document.getElementById('to')
 const publishBtn=document.getElementById('publish')
+const formEL = document.getElementById('myForm')
+
+
 
 function getRandomLike(){
  let randomLike=Math.floor(Math.random()*15)
@@ -30,20 +33,23 @@ function getRandomLike(){
 
 
 
-publishBtn.addEventListener('click',()=>{
+formEL.addEventListener('submit',()=>{
+  event.preventDefault()
+  
   let messageObject={
     messageText: textMessage.value,
-    messageFrom:from.value,
-    messageTo:to.value,
+    messageFrom:author.value? author.value : 'Anon',
+    messageTo:recepient.value,
     likes:getRandomLike(),
   }
   
   clearMessages()
+  if(author.value != '' && textMessage.value != ''){
   push(messageListInDb,messageObject)
-  
+  }
   textMessage.value=''
-  to.value=''
-  from.value=''
+  recepient.value=''
+  author.value=''
 })
 
 onValue(messageListInDb,(snapshot)=>{
