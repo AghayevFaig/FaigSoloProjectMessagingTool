@@ -13,15 +13,21 @@
     <div class="header">
       <img src="images/fredie.png"/>
       <h2>We are the Champions</h2>
-      <div class="endorse">
-        <textarea placeholder="Write your endorsement here" id="text-message"></textarea>
-        <div class="names">
-          <input type="text" placeholder="From" id="from">
-          <input type="text" placeholder="To" id="to">
-        </div>
-        <button id="publish">Publish</button>
+      
+    
+    
+    <form id="myForm" class="endorse">
+      <textarea placeholder="Write your endorsement here" id="text-message" required></textarea>
+      <div class="names">
+        <input type="text" placeholder="From" id="from">
+        <input type="text" placeholder="To" id="to" required>
       </div>
-    </div>
+      <button id="publish" type="submit">Publish</button>
+    </form>
+    
+    
+    
+    
     <h3>- Endorsements - </h3>
     <div class="publishment">
       <ul id="message-list">
